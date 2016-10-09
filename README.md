@@ -1,5 +1,36 @@
 ## Website Performance Optimization portfolio project
 
+### Setup
+
+To setup this project, you just need to add all files to the server and open the pages on the browser
+
+This project has been hosted and is accessible from the following addresses:
+
+* <a href="http://marcellovalenca.com/tests/portfolio/index.html">Portfolio (`index.html`)</a>
+* <a href="http://marcellovalenca.com/tests/portfolio/views/pizza.html">Pizzeria (`views/pizza.html`)</a>
+
+### Optimizations
+
+####Part 1: Optimizing PageSpeed Insights score for index.html
+
+* Compressed `profilepic.jpg` - from 14KB to 2.17KB
+* Compressed `pizzaria.jpg` - from 2.25MB to 37KB (normal) and 4KB (small). The small size is used in the Portfolio, and the normal size is used in the Pizzeria
+* Removed web fonts css reference, as it had a huge impact on performance and was not important for the page's customization
+* Added `media="screen"` for `style.css` and `media="print"` for `print.css` to avoid unnecessary loads
+* Added async to `analytics.js`, as it is not necessary to the main functionalities of the page
+* Changed server settings to compress all content using gzip
+
+####Part 2: Optimizing Frames per Second in pizza.html
+
+* Removed Forced Synchronous Layout problem inside `main.js` changing function `resizePizzas`. Time to resize pizzas is now less than 5 ms using the pizza size slider on the `views/pizza.html` page
+* Removed Forced Synchronous Layout problem inside `main.js` changing function `updatePositions`. When scrolling, `views/pizza.html` now render with a consistent frame-rate at `60fps`
+
+### To do
+
+* Leverage browser caching - I did not manage to leverage browser caching on the server I am using to host the pages
+
+## Original project specification
+
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
 
 To get started, check out the repository and inspect the code.
